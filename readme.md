@@ -108,3 +108,7 @@ customize every endpoints
       delete: '/api/v2/${resource}/${id}'
     });
 ```
+
+## License
+
+MIT - see license file
