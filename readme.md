@@ -30,7 +30,9 @@ delete: {method: 'DELETE'}
 
 ### All
 ```js
-  const clients = pilou('clients');
+  import resource from 'pilou';
+  
+  const clients = resource('clients');
   
   // GET /api/clients/
   clients.all().then(response => {
