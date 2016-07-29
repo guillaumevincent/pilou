@@ -2,7 +2,7 @@ import axios from 'axios';
 import template from 'es6-template-strings';
 
 
-export default function (resource, options = {}) {
+module.exports = function (resource, options = {}) {
   const defaultOptions = {
     all: options.all || '/api/${resource}/',
     create: options.create || options.all || '/api/${resource}/',
@@ -37,4 +37,4 @@ export default function (resource, options = {}) {
       return axios.delete(`${url}`, config);
     }
   };
-}
+};
