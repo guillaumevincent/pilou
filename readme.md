@@ -49,8 +49,8 @@ delete: {method: 'DELETE'}
 
 ### Create
 ```js
-  // POST /api/clients/ {name: 'resource name'}
-  clients.create({name: 'resource name'});
+  // POST /api/clients/ {name: 'client name'}
+  clients.create({name: 'client name'});
 ```
 
 ### Update
@@ -68,7 +68,7 @@ delete: {method: 'DELETE'}
 ## Headers and Params
 ```js  
   const config = {
-    headers: {Authorization: `JWT 3b7aa4a47823b7aa4a47823b7aa4a4782`},
+    headers: {Authorization: `JWT ...`},
     params: {date: '-created'}
   };
   // GET /api/clients/?date=-created
