@@ -113,12 +113,42 @@ test('should define only all and get custom endpoint', t => {
   });
 });
 
-test('should allow custom param', t => {
-  nock('http://localhost/').get('/api/v2/equipments/42').reply(200, {});
-  const equipments = resource('equipments', {
-    get: '/api/v2/${resource}/${equipmentId}'
-  });
-  return equipments.get({equipmentId: 42}).then(response => {
+test('should allow custom endpoint for all method', t => {
+  nock('http://localhost/').get('/api/v3/equipments/').reply(200, {});
+  const equipments = resource('equipments');
+  return equipments.all({url: '/api/v3/equipments/'}).then(response => {
     t.is(response.status, 200);
+  });
+});
+
+test('should allow custom endpoint for get method', t => {
+  nock('http://localhost/').get('/api/v3/equipments/42/').reply(200, {});
+  const equipments = resource('equipments');
+  return equipments.get({idEquipment: 42}, {url: '/api/v3/equipments/${idEquipment}/'}).then(response => {
+    t.is(response.status, 200);
+  });
+});
+
+test('should allow custom endpoint for put method', t => {
+  nock('http://localhost/').put('/api/v3/equipments/42/', {name: 'new name'}).reply(200, {});
+  const equipments = resource('equipments');
+  return equipments.update({idEquipment: 42}, {name: 'new name'}, {url: '/api/v3/equipments/${idEquipment}/'}).then(response => {
+    t.is(response.status, 200);
+  });
+});
+
+test('should allow custom endpoint for post method', t => {
+  nock('http://localhost/').post('/api/v3/equipments/', {name: 'new name'}).reply(201, {});
+  const equipments = resource('equipments');
+  return equipments.create({name: 'new name'}, {url: '/api/v3/equipments/'}).then(response => {
+    t.is(response.status, 201);
+  });
+});
+
+test('should allow custom endpoint for delete method', t => {
+  nock('http://localhost/').delete('/api/v3/equipments/42/').reply(204, {});
+  const equipments = resource('equipments');
+  return equipments.delete({idEquipment: 42}, {url: '/api/v3/equipments/${idEquipment}/'}).then(response => {
+    t.is(response.status, 204);
   });
 });

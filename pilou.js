@@ -1,7 +1,6 @@
 import axios from 'axios';
 import template from 'es6-template-strings';
 
-
 module.exports = function (resource, options = {}) {
   const defaultOptions = {
     all: options.all || '/api/${resource}/',
@@ -12,29 +11,30 @@ module.exports = function (resource, options = {}) {
   };
 
   return {
-    _getUrl(method, resource, defaultOptions, context = {}) {
-      const templateUrl = defaultOptions[method];
-      return template(templateUrl, Object.assign({resource}, context));
-    },
     all(config = {}) {
-      const url = this._getUrl('all', resource, defaultOptions);
+      const templateUrl = config.url || defaultOptions.all;
+      const url = template(templateUrl, {resource});
       return axios.get(url, config);
     },
     create(json, config = {}) {
-      const url = this._getUrl('create', resource, defaultOptions);
+      const templateUrl = config.url || defaultOptions.create;
+      const url = template(templateUrl, {resource});
       return axios.post(url, json, config);
     },
     get(context, config = {}) {
-      const url = this._getUrl('get', resource, defaultOptions, context);
-      return axios.get(`${url}`, config);
+      const templateUrl = config.url || defaultOptions.get;
+      const url = template(templateUrl, Object.assign({resource}, context));
+      return axios.get(url, config);
     },
     update(context, json, config = {}) {
-      const url = this._getUrl('update', resource, defaultOptions, context);
-      return axios.put(`${url}`, json, config);
+      const templateUrl = config.url || defaultOptions.update;
+      const url = template(templateUrl, Object.assign({resource}, context));
+      return axios.put(url, json, config);
     },
     delete(context, config = {}) {
-      const url = this._getUrl('delete', resource, defaultOptions, context);
-      return axios.delete(`${url}`, config);
+      const templateUrl = config.url || defaultOptions.delete;
+      const url = template(templateUrl, Object.assign({resource}, context));
+      return axios.delete(url, config);
     }
   };
 };
