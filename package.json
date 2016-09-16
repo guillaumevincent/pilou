@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/guillaumevincent/pilou#readme",
   "dependencies": {
-    "axios": "^0.13.1",
+    "axios": "^0.14.0",
     "es6-template-strings": "^2.0.0"
   },
   "devDependencies": {

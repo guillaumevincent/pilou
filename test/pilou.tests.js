@@ -1,9 +1,12 @@
 import test from 'ava';
+import axios from 'axios';
 import nock from 'nock';
 
 import resource from '../pilou';
 
 const clients = resource('clients');
+
+axios.defaults.baseURL = 'http://localhost';
 
 test('should get all clients', t => {
   nock('http://localhost/').get('/api/clients/').reply(200, {});
