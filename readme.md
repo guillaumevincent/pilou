@@ -34,9 +34,9 @@ exemple create `clients` resource
 
 ##### pilou.all([config])
 ##### pilou.delete([config])
-##### pilou.get(data[, config]])
-##### pilou.post(data[, config]])
-##### pilou.put(data[, config]])
+##### pilou.get(data[, config])
+##### pilou.create(data[, config])
+##### pilou.update(data[, config])
 
 
 ## API
