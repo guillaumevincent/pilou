@@ -26,7 +26,7 @@
   "homepage": "https://github.com/guillaumevincent/pilou#readme",
   "dependencies": {
     "axios": "^0.14.0",
-    "es6-template-strings": "^2.0.0"
+    "es6-template-render": "^0.1.0"
   },
   "devDependencies": {
     "ava": "^0.15.2",

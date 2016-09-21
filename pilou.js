@@ -1,5 +1,5 @@
 import axios from 'axios';
-import template from 'es6-template-strings';
+import generateTemplateString from 'es6-template-render';
 
 module.exports = function (resource, options = {}) {
   const defaultOptions = {
@@ -13,27 +13,27 @@ module.exports = function (resource, options = {}) {
   return {
     all(config = {}) {
       const templateUrl = config.url || defaultOptions.all;
-      const url = template(templateUrl, {resource});
+      const url = generateTemplateString(templateUrl)({resource});
       return axios.get(url, config);
     },
     create(json, config = {}) {
       const templateUrl = config.url || defaultOptions.create;
-      const url = template(templateUrl, {resource});
+      const url = generateTemplateString(templateUrl)({resource});
       return axios.post(url, json, config);
     },
     get(context, config = {}) {
       const templateUrl = config.url || defaultOptions.get;
-      const url = template(templateUrl, Object.assign({resource}, context));
+      const url = generateTemplateString(templateUrl)(Object.assign({resource}, context));
       return axios.get(url, config);
     },
     update(context, json, config = {}) {
       const templateUrl = config.url || defaultOptions.update;
-      const url = template(templateUrl, Object.assign({resource}, context));
+      const url = generateTemplateString(templateUrl)(Object.assign({resource}, context));
       return axios.put(url, json, config);
     },
     delete(context, config = {}) {
       const templateUrl = config.url || defaultOptions.delete;
-      const url = template(templateUrl, Object.assign({resource}, context));
+      const url = generateTemplateString(templateUrl)(Object.assign({resource}, context));
       return axios.delete(url, config);
     }
   };
