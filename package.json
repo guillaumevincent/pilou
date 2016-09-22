@@ -2,9 +2,9 @@
   "name": "pilou",
   "version": "0.1.3",
   "description": "http crud library for making web requests with promises",
-  "main": "lib/pilou.js",
+  "main": "lib/index.js",
   "scripts": {
-    "babelify": "babel pilou.js -o lib/pilou.js",
+    "babelify": "babel index.js -o lib/index.js",
     "build": "rm -rf lib && mkdir lib && npm run babelify",
     "prepublish": "npm test && npm run build",
     "test": "ava --require babel-core/register && xo"
@@ -26,7 +26,7 @@
   "homepage": "https://github.com/guillaumevincent/pilou#readme",
   "dependencies": {
     "axios": "^0.14.0",
-    "es6-template-render": "^0.1.1"
+    "es6-template-render": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.15.2",
@@ -49,5 +49,9 @@
       "es2015"
     ],
     "comments": false
-  }
+  },
+  "files": [
+    "lib/",
+    "index.js"
+  ]
 }

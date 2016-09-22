@@ -2,7 +2,7 @@ import test from 'ava';
 import axios from 'axios';
 import nock from 'nock';
 
-import resource from '../pilou';
+import resource from '../index';
 
 const clients = resource('clients');
 
